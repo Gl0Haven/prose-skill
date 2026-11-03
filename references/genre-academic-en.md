@@ -6,18 +6,26 @@ LaTeX checks, and claim-evidence mapping live in `ieee-paper` and
 `journal-paper-revision`; Nature-family drafting in `nature-writing` / `nature-polishing`.
 This file sets the prose standard those skills assume.
 
+Read with it: [academic-method.md](academic-method.md) for the whole-paper approach (one contribution,
+the context → gap → answer arc, writing order, what each section does, venue differences), and
+[academic-language-en.md](academic-language-en.md) for stance, tense, sentence construction, Chinese-L1
+issues and the function-organised phrase table. Before drafting, run `profile.py context` (see
+[learning.md](learning.md)) to load the writer's own rules, venue card and exemplar cards.
+
 ## Voice
-Formal, precise, impersonal. No contractions, no first-person singular, no rhetorical
-questions. "We" is acceptable for the authors' actions. Passive is fine where the actor
-is obvious (methods, setup); use active verbs for claims and contributions.
+Formal, precise, direct. No contractions, no first-person singular, no rhetorical
+questions. Use active "we" for the authors' choices, claims and results: in top EE journals
+"we" rose from 47 to 71 per 10k words between 1965 and 2015 [M]. Passive is fine for routine
+procedure where the actor is irrelevant (methods, setup).
 
 ## Each section has one job
-- Abstract: problem → gap → method → strongest measured result → meaning and boundary. No citations, no unsupported novelty.
-- Introduction: why the problem matters → what exists → the specific gap → the core idea → evidence summary → contributions.
-- Related work: grouped by family and by limitation, not a list of summaries. Each paragraph ends on what that family cannot do that this work needs.
-- Method: reproducible; give the design rationale where a reader would ask "why this choice".
-- Results: setup → main comparison → ablation → diagnostics → failure cases. Every number has a protocol and a direction.
-- Conclusion: contribution, key evidence, boundary. No new claims, no "future work could explore many directions".
+- Abstract: context → gap → mechanism → strongest measured result with its protocol → meaning and boundary. No citations, no unsupported novelty.
+- Introduction: shared context → gap with its cost → the core idea → evidence summary → refutable contributions with section pointers.
+- Related work: grouped by family and by limitation, not a list of summaries. Each group ends on the assumption this work relaxes.
+- Method: intuition and a small example before the general formalism; reproducible; give the design rationale where a reader would ask "why this choice".
+- Results: ordered by the argument; each paragraph opens with a question and ends with its answer; isolate the source of the gain (ablation, error analysis); report failures.
+- Conclusion: contribution, key evidence, boundary. No new claims, no future-work wish list.
+Details and sources for each are in academic-method.md section 3.
 
 ## Claims
 - Match the verb to the evidence (see `journal-paper-revision` claim calibration).

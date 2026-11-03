@@ -39,7 +39,19 @@ description: 中英文写作、改写与去 AI 味：先判定文体，按文体
 语言层规范必读其一：中文读 [zh](references/lang-zh.md)，英文读 [en](references/lang-en.md)。
 AI 腔清单里的条目在不同文体下宽严不同，以文体规范为准。
 
+写期刊论文、学位论文或综述时，再读 [academic-method](references/academic-method.md)（一个核心贡献、引言弧线、写作顺序、各部分职能、按期刊取舍）；
+英文论文的用词造句读 [academic-language-en](references/academic-language-en.md)（立场强度、时态语态、中国作者常见问题、按功能组织的表达）。
+
 其他技能管"写什么、按什么格式交"，本技能管"怎么写"。两者冲突时，期刊、法律或模板的硬性要求优先。
+
+## 写作档案：越用越懂作者
+
+通用规范之外，每位作者、每本期刊、每位导师的偏好都不同，这部分靠使用中积累，规则见 [learning.md](references/learning.md)。
+- 起草前：运行 `python ~/.claude/skills/prose/scripts/profile.py context --genre <文体> --venue <期刊> --section <章节> --lang <zh|en>`，
+  照适用规则、期刊卡片、范文结构卡片和作者样稿写。档案不存在时先 `profile.py init`；档案为空就按通用规范写。
+- 交付后：作者改了稿、给了意见，或者明确说"以后都这样"时，按 learning.md 第 2–3 节记录观察；够条件的在交付说明里问一句要不要升为规则。
+- 作者说"学一下这几篇 / 这本期刊的写法"时，按 learning.md 第 4 节做范文卡片和期刊卡片。
+- 只学作者本人的偏好；帮别人改稿时不写档案。
 
 ## 第二步：先想清楚再写
 
@@ -88,3 +100,4 @@ python ~/.claude/skills/prose/scripts/check_prose.py <文件> --genre <academic-
 
 交付成品本身。改写时另附一份简短的改动说明（改了哪几类问题、为什么），不逐句解释。
 用户要求保持原有风格时，只修错和去 AI 腔，不换他的声音。
+档案里新记了观察、有待确认的规则时，在改动说明末尾用一两句话说明，不另起长段。
