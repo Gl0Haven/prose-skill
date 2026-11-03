@@ -100,6 +100,8 @@ TECH_EN = ["blazing fast", "blazing-fast", "powerful", "out of the box", "contri
 ACAD_EN = ["a novel", "towards", "unlocking", "extensive experiments", "state-of-the-art", "paving the way",
            "superiority", "comprehensive experiments"]
 ACAD_ZH = ["新颖的", "大量实验表明", "充分证明", "优越性", "提供了新思路", "具有重要的理论意义和应用价值"]
+# 单个破折号；数字之间的连接号（GB/T 7713.2—2022、2019—2024）不算
+SINGLE_DASH = r"(?<!—)(?<!\d)—(?!—)|(?<=\d)—(?![\d—])"
 SYMBOLS = r"[→✅✔✨🚀⚡🔥💡📌👉•]"
 HEAD_RX = [
     (r"^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$", None),
@@ -228,7 +230,7 @@ def main():
                 add(n, "AI 痕迹", "顿号并列过密", f"{text.count('、')} 个")
             if re.search(r"[\u4e00-\u9fff][,;:?!]|[,;:?!][\u4e00-\u9fff]|[\u4e00-\u9fff]\([\u4e00-\u9fff]", text):
                 add(n, "排版", "中文句子里用了半角标点")
-            if re.search(r"(?<!—)—(?!—)|[\u4e00-\u9fff]\s?--\s?[\u4e00-\u9fff]", text):
+            if re.search(SINGLE_DASH + r"|[\u4e00-\u9fff]\s?--\s?[\u4e00-\u9fff]", text):
                 add(n, "排版", "中文破折号应写作两字宽『——』")
             if re.search(r"……\s*等|\.\.\.\s*等", text):
                 add(n, "排版", "省略号不和『等』连用")
@@ -243,7 +245,7 @@ def main():
                 for m in re.finditer(rx, low):
                     add(n, group, label, m.group(0)[:30])
         if "——" in text or "—" in text:
-            dashes.extend([n] * (text.count("——") + len(re.findall(r"(?<!—)—(?!—)", text))))
+            dashes.extend([n] * (text.count("——") + len(re.findall(SINGLE_DASH, text))))
         if text.count("**") >= 4:
             add(n, "AI 痕迹", "加粗过多")
         if re.search(SYMBOLS, text) and not re.match(r"^\s*[-*+]\s", line):

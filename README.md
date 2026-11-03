@@ -75,7 +75,7 @@ prose 是一个 Claude Code 技能，用于中英文文稿的起草、改写和�
 
 ## 安装
 
-将本仓库克隆到 Claude Code 的技能目录：
+将本仓库克隆到 Claude Code 的技能目录。
 
 ```bash
 git clone https://github.com/Gl0Haven/prose-skill ~/.claude/skills/prose
@@ -86,13 +86,13 @@ git clone https://github.com/Gl0Haven/prose-skill ~/.claude/skills/prose
 ## 使用
 
 在 Claude Code 中提出写作或改写请求即可触发，例如"润色这段引言""把这封邮件改得简洁一些""检查这篇稿子的 AI 痕迹"。
-首次使用写作档案前，先初始化：
+首次使用写作档案前，先运行初始化命令。
 
 ```bash
 python ~/.claude/skills/prose/scripts/profile.py init
 ```
 
-常用命令：
+常用命令如下表。
 
 | 命令 | 作用 |
 |---|---|
@@ -136,10 +136,11 @@ prose/
 ## English summary
 
 prose is a Claude Code skill for drafting, revising and reviewing Chinese and English documents. It identifies the genre
-first and applies genre-specific rules: academic papers, patents, reports, technical documents, letters and essays.
+first and applies the rules for that genre. Supported genres are academic papers, patents, reports, technical documents,
+letters and essays.
 Its journal-writing guidance synthesizes established methods (Mensh & Kording, Gopen & Swan, Whitesides, Williams,
 Peyton Jones) with corpus studies of research articles and current Chinese national standards. A de-AI workflow
 diagnoses AI-style writing on seven layers without adding facts or changing numbers, hedges or attributions. A per-writer
-profile, stored outside the skill directory, learns preferences from the writer's edits and feedback and promotes them to
-rules only after repeated evidence or explicit confirmation. Every rule is tagged by its evidence: measured, style guide,
+profile, stored outside the skill directory, learns preferences from the writer's edits and feedback. A preference becomes
+a rule only after it recurs or the writer confirms it. Every rule is tagged by its evidence: measured, style guide,
 or editorial observation.
